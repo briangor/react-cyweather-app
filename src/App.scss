@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+}
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Home
+.app {
+  padding: 4% 4%;
+  box-sizing: border-box;
+
+  .input-group {
+      width: 70%;
+  }
+
+  .main-chart {
+      border: 1px solid silver;
+      border-radius: 20px;
+
+      &:hover {
+          border-color: rgb(150, 149, 149);
+      }
+  }
+
+  .unit-chart:hover {
+      border: 1px solid silver;
+      border-radius: 20px;
+  }
+}
+
+
+
+// Footer
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+// Media Queries
+@media only screen and (max-width: 768px) {
+
+  /* For mobile phones: */
+  [class*="col-"] {
+      width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  [class*="col-"] {
+      width: 100%;
+  }
+
+  .inputs {
+      text-align: center;
+
+      .input-group {
+          width: 100%;
+      }
+  }
+
+  .main-chart {
+      border: none !important;
+
+  }
+
+  highcharts-chart {
+      margin: auto;
+  }
+
+}
+
