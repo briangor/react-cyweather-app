@@ -44,9 +44,9 @@ const Home = () => {
               setStatus("An unknown error occurred.");
               break;
           }
-          // Default to null in case of error
-          setLat(null); 
-          setLong(null);
+          // Default to empty in case of error
+          setLat(""); 
+          setLong("");
         }
       );
     }
