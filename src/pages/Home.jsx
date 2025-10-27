@@ -19,16 +19,34 @@ const Home = () => {
   const getCurrentLocation = () => {
     if (!navigator.geolocation) {
       setStatus("Geolocation is not supported by your browser");
+      return; // Early return if geolocation is not supported
     } else {
       setStatus("Locating...");
-      navigator.geolocation.getCurrentPosition(
+      navigator.geolocation.getCurrentPosition(      
         (position) => {
           setStatus(null);
           setLat(position.coords.latitude);
           setLong(position.coords.longitude);
         },
-        () => {
-          setStatus("Unable to retrieve your location");
+        (error) => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              setStatus("User denied the request for Geolocation.");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              setStatus("Location information is unavailable.");
+              break;
+            case error.TIMEOUT:
+              setStatus("The request to get your location timed out.");
+              break;
+            case error.UNKNOWN_ERROR:
+            default:
+              setStatus("An unknown error occurred.");
+              break;
+          }
+          // Default to null in case of error
+          setLat(null); 
+          setLong(null);
         }
       );
     }
